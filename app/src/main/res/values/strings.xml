@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Converter_3</string>
+    <string name="SainiBrowser">textView2</string>
+    <string name="imgDescription">heart_outline</string>
+    <string-array name="currencies">
+        <item>EUR</item>
+        <item>RUB</item>
+    </string-array>
+</resources>
