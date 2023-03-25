@@ -27,13 +27,10 @@ class RateAdapter(private val context: Context) :
 
     private val imgHeartON: Drawable? = getImgHeartON(context)
     private val imgHeartOff: Drawable? = getImgHeartOff(context)
-  //  var listOfFavouritesRates = ListOfFavouritesRates.listOfFavouritesRates
-
     var items: List<Any> = emptyList()
 
 
     private val positions = mutableMapOf<Int, Boolean>()
-    private val positionsFavourite = mutableMapOf<Int, Boolean>()
     override fun getItemViewType(position: Int): Int {
         val item = items[position]
         return when (item) {
@@ -45,12 +42,16 @@ class RateAdapter(private val context: Context) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.d(
-            "Lo111",
-            "viewType:  $viewType")
+
         return when (viewType) {
             VIEW_TYPE_FAVOURITES -> FavouritesViewHolder(context, parent)
-            VIEW_TYPE_LIST -> RatesViewHolder(context, parent, positions, imgHeartON!!, imgHeartOff!!)
+            VIEW_TYPE_LIST -> RatesViewHolder(
+                context,
+                parent,
+                positions,
+                imgHeartON!!,
+                imgHeartOff!!
+            )
             VIEW_TYPE_PLACEHOLDER -> PlaceholderViewHolder(parent)
             else -> throw java.lang.IllegalStateException("Con not create ViewHolder for viewType $viewType")
 
@@ -82,7 +83,7 @@ class RateAdapter(private val context: Context) :
                             var iterator = ListOfFavouritesRates.listOfFavouritesRates.iterator()
                             while (iterator.hasNext()) {
                                 val it = iterator.next().name
-                                if(item.name == it) {
+                                if (item.name == it) {
                                     iterator.remove()
                                 }
                             }
@@ -92,7 +93,12 @@ class RateAdapter(private val context: Context) :
                         imgHeartOff -> {
                             holder.tvStar.setImageDrawable(imgHeartON)
 
-                                    ListOfFavouritesRates.listOfFavouritesRates.add(Favourites(item.name, item.rate))
+                            ListOfFavouritesRates.listOfFavouritesRates.add(
+                                Favourites(
+                                    item.name,
+                                    item.rate
+                                )
+                            )
 
                             notifyDataSetChanged()
                             positions[position] = true

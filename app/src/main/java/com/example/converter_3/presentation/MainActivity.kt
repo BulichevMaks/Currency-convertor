@@ -20,12 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonToFavourite: ImageView
     private lateinit var buttonToFavouriteOff: ImageView
     private lateinit var recyclerList: RecyclerView
-
-    //   private lateinit var buttonRefresh: ImageView
     private lateinit var inputAmount: EditText
     private lateinit var placeholder: View
-
-    //  private lateinit var apiLayerService: ApiLayerApi
     private lateinit var adapter: RateAdapter
     private lateinit var inputEditText: EditText
     private var input = "1"
@@ -131,17 +127,9 @@ class MainActivity : AppCompatActivity() {
             false
         }
 
-
-//        val interceptor = HttpLoggingInterceptor()
-//        interceptor.level = HttpLoggingInterceptor.Level.BODY
-//        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-
         recyclerList = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerList.adapter = adapter
-
-
 
         buttonToFavourite.setOnClickListener {
 
@@ -165,7 +153,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 input = s.toString()
-                //  clearButton.visibility = clearButtonVisibility(s)
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -179,15 +166,11 @@ class MainActivity : AppCompatActivity() {
 
         for (itemF in listOfFavouritesRates) {
             for (itemL in list) {
-
                 if (itemF.name == itemL.first) {
                     itemF.rate = itemL.second * input.toDouble()
                 }
             }
         }
-
-
-        //     val updatedRates = list.map { it.name to it.rate * input.toDouble() }
         adapter.items = listOfFavouritesRates
         adapter.notifyDataSetChanged()
         showMessage("", Event.SUCCESS)
@@ -198,27 +181,17 @@ class MainActivity : AppCompatActivity() {
         when (event) {
             Event.SUCCESS -> {
 
-                //   buttonRefresh.visibility = View.GONE
             }
             Event.NOTHING_FOUND -> {
                 adapter.items = mutableListOf(Problem())
-                //     adapter.notifyDataSetChanged()
-
             }
             Event.SERVER_ERROR -> {
                 adapter.items = mutableListOf(Problem())
             }
-//                image = if (isDarkTheme()) {
-//                    placeholder.setDrawableTop(R.drawable.error_not_found_dark)
-//                    R.drawable.error_not_found_dark
-            //               } else {
-//                    placeholder.setDrawableTop(R.drawable.error_not_found_light)
-//                    R.drawable.error_not_found_light
+
             else -> {
                 adapter.items = mutableListOf(Problem())
             }
         }
     }
-
-
 }

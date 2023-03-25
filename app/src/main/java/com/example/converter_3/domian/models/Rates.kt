@@ -19,7 +19,7 @@ class Rates(
 )
 
 class RatesViewHolder(
-    val context: Context,
+    private val context: Context,
     parentView: ViewGroup,
     private val positions: Map<Int, Boolean>,
     private val imgHeartON: Drawable,
@@ -40,7 +40,6 @@ class RatesViewHolder(
     private val tvRateTo: TextView = itemView.findViewById(R.id.rate_to)
 
     fun bind(item: Rates) {
-        Log.d("Log BIND", "bind_layoutPosition: $this  $layoutPosition")
 
         for (name in RatesFrom.listOfCurrencyName) {
             if (name.first == item.name)
@@ -64,14 +63,11 @@ class RatesViewHolder(
 
         }
 
-
         if (positions[layoutPosition] == true) {
             tvStar.setImageDrawable(imgHeart)
         } else {
             tvStar.setImageDrawable(imgHeartOutLine)
         }
-    //    tvRate.text = String.format("%.2f", item.rate)
         tvRateTo.text = item.name
-
     }
 }

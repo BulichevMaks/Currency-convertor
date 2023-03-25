@@ -14,8 +14,9 @@ data class Favourites(
     val name: String,
     var rate: Double)
 
-class FavouritesViewHolder(val context: Context,
-                           parentView: ViewGroup
+class FavouritesViewHolder(
+    private val context: Context,
+    parentView: ViewGroup
 ) :
     RecyclerView.ViewHolder(
         LayoutInflater.from(parentView.context)
@@ -28,7 +29,6 @@ class FavouritesViewHolder(val context: Context,
     private val tvFlag: ImageView = itemView.findViewById(R.id.flagF)
 
     fun bind(item: Favourites) {
-        Log.d("Log BIND", "bind_layoutPosition: $this  $layoutPosition")
 
         for (name in RatesFrom.listOfCurrencyName) {
             if (name.first == item.name)
@@ -54,6 +54,5 @@ class FavouritesViewHolder(val context: Context,
 
         tvRate.text = String.format("%.2f", item.rate)
         tvRateTo.text = item.name
-
     }
 }
