@@ -5,5 +5,7 @@
     <string-array name="currencies">
         <item>EUR</item>
         <item>RUB</item>
+        <item>RSD</item>
+        <item>USD</item>
     </string-array>
 </resources>

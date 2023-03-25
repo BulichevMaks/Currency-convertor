@@ -3,20 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingBottom="8dp">
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    tools:ignore="MissingDefaultResource">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_weight="8"
-        android:background="#D5D2D2"
         android:orientation="horizontal"
         android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="#D5D2D2"
         tools:ignore="MissingConstraints">
 
+        <TextView
+            android:id="@+id/rateF"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="start"
+            android:maxLength="12"
+            android:singleLine="true"
+            android:text="2.5434435443"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/rate_toF"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:gravity="center_horizontal"
+            android:text="USD"
+            android:textSize="24sp"
+            android:textStyle="bold" />
         <ImageView
-            android:id="@+id/flag"
+            android:id="@+id/flagF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -26,44 +48,19 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/rate_to"
-            android:layout_width="68dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0"
-            android:gravity="center_horizontal"
-            android:text="USD"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/name"
+            android:id="@+id/nameF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0"
-            android:paddingStart="8dp"
-            android:text="Unitegfdgfdgfdgfdgfdgfdgfdgfdgfgfdgdm"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:background="#D5D2D2"
-        android:orientation="horizontal"
-        android:paddingStart="2dp">
-
-        <ImageView
-            android:id="@+id/heart_out_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:contentDescription="@string/imgDescription"
-            android:src="@drawable/heart_outline" />
+            android:text="Unitghjgjhhjbjhbhjbjhbhbhjghjghjedm"
+            android:textSize="14sp" />
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"/>
+
 </LinearLayout>
